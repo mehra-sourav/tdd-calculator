@@ -105,3 +105,17 @@ test("Evaluates string with custom delimiters of any length between numbers", ()
     expect(result).toBe(expectedOutput);
   });
 });
+
+test("Evaluates string with multiple delimiters between numbers", () => {
+  const inputsOutputs = [
+    ["//[*][%]\n1*2", 3],
+    ["//[*][%]\n1*2%3", 6],
+    ["//[*][%][&]\n1*2%3&4", 10],
+    ["//[*][%][&][$]\n1*2%3&4$5", 15],
+  ];
+
+  inputsOutputs.forEach(([input, expectedOutput]) => {
+    let result = add(input);
+    expect(result).toBe(expectedOutput);
+  });
+});
