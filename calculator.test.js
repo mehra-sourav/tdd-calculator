@@ -78,3 +78,16 @@ test("Throws an exception for negative numbers", () => {
     );
   });
 });
+
+test("Ignores numbers greater than 1000", () => {
+  const inputsOutputs = [
+    ["2,1100,3,4,5,1230", 14],
+    ["1\n1200,2,1050,3\n1001\n4,5", 15],
+    ["1\n1050,2,3\n1001,4", 10],
+  ];
+
+  inputsOutputs.forEach(([input, expectedOutput]) => {
+    let result = add(input);
+    expect(result).toBe(expectedOutput);
+  });
+});

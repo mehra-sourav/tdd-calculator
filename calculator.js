@@ -19,7 +19,9 @@ const add = (stringInput) => {
     )}`;
   }
 
-  let result = inputNumbers.reduce((sum, curr) => sum + Number(curr), 0);
+  let result = inputNumbers.reduce((sum, curr) => {
+    return sum + (curr > 1000 ? 0 : Number(curr));
+  }, 0);
 
   return result;
 };
