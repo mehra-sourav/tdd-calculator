@@ -1,5 +1,7 @@
 const getNumbersFromString = (string) => {
-  return string.match(/\d+/g).map((num) => Number(num));
+  const delimiterPattern = /\d+/g;
+  //   const delimiterPattern = /\/\/\[(.*?)\]/;
+  return string.match(delimiterPattern)?.map((num) => Number(num)) ?? [];
 };
 
 const add = (stringInput) => {
