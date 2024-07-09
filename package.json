@@ -1,0 +1,14 @@
+{
+    "name": "TDD Calculator",
+    "version": "1.0.0",
+    "description": "Test Driven Development Kata for String Calculator",
+    "main": "calculator.js",
+    "scripts": {
+        "test": "jest"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "jest": "^29.7.0"
+    }
+}
