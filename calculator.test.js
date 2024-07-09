@@ -18,3 +18,17 @@ test("Evaluates string with comma separated numbers", () => {
     expect(result).toBe(expectedOutput);
   });
 });
+
+test("Evaluates string with new line between numbers", () => {
+  const inputsOutputs = [
+    ["1\n2", 3],
+    ["1\n2,3", 6],
+    ["1\n2,3\n4", 10],
+    ["1\n2,3\n4,5", 15],
+  ];
+
+  inputsOutputs.forEach(([input, expectedOutput]) => {
+    let result = add(input);
+    expect(result).toBe(expectedOutput);
+  });
+});
