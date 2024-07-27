@@ -119,3 +119,15 @@ test("Evaluates string with multiple delimiters between numbers", () => {
     expect(result).toBe(expectedOutput);
   });
 });
+
+test("Evaluates difference of sum of odd and even numbers if the delimited is '@'", () => {
+  const inputsOutputs = [
+    ["//@\n1@2@3@4@5", 3],
+    ["//$\n1$2$3$4$5", 15],
+  ];
+
+  inputsOutputs.forEach(([input, expectedOutput]) => {
+    let result = add(input);
+    expect(result).toBe(expectedOutput);
+  });
+});
