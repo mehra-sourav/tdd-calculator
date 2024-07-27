@@ -3,18 +3,21 @@ const getNumbersFromString = (string) => {
     return string.match(delimiterPattern)?.map((num) => Number(num)) ?? [];
 };
 
+const checkDelimiter = (string, delimiter) => {
+  const delimiterPattern = /\/\/(.)/g;
+  const match = string.match(delimiterPattern);
+
+  return match?.[0] === `//${delimiter}`;
+};
+
 const add = (stringInput) => {
   if (stringInput === "") {
     return 0;
   }
 
-  const delimiterPattern = /\/\/@/g;
-  const numberPattern = /-?\d+/g;
-  
-  let inputNumbers = stringInput.match(numberPattern)?.map((num) => Number(num)) ?? [];
+  let inputNumbers = getNumbersFromString(stringInput);
   let negativeNumbers = inputNumbers.filter((num) => num < 0);
   
-
   if (negativeNumbers.length > 0) {
     let errorMsg = negativeNumbers.reduce((msg, num) => `${msg}${num},`, "");
     throw `Negatives numbers are not allowed: ${errorMsg.substring(
@@ -25,8 +28,8 @@ const add = (stringInput) => {
 
   let result;
   
-  // If contains '@' as delimiter
-  if (stringInput.match(delimiterPattern)?.length > 0) {
+  // If string contains '@' as delimiter
+  if (checkDelimiter(stringInput, '@')) {
     let oddSum = 0, evenSum = 0;
 
     inputNumbers.forEach((num, idx) => {
